@@ -106,8 +106,6 @@ find . -type f -name "*.txt" | xargs grep -l second
 grep -r -v 'second'
 
 32. Найти только название и путь к файлам где нет комбинации “second”
-find -type f -name ‘*tf*’ | xargs grep -lv second – без содержисла, но файлы, где есть second – тк показывает файлы, но не показывает строку с  second
-find -type f -name "*.txt" | xargs grep -v -l second find не нужен!!!
 grep -L -r 'second'
 
 33. Вывести в терминал 4 последних строк любого текстового файла
@@ -130,16 +128,9 @@ grep -lr sec | xargs cp -t inner_dir_3
 или 
 find . -type f -name "*.txt" | grep -lr sec | xargs cp -t inner_d3
 
-38. Команда в одну строку. Найти все строки c “sec” во всех текстовых файлах, скопировать и вставить эти строки в один новый созданный текстовый файл.
+38. Команда в одну строку. Найти все строки c “sec” во всех текстовых файлах, 
+скопировать и вставить эти строки в один новый созданный текстовый файл.
 grep -rh 'sec' . > sec.txt
-неправильно:
-find . -type f -name "*.txt" | xargs cp -t | xargs grep -lrw sec | xargs > new.txt | xargs mv -t inner_d3 в текущей папке создается новый файл, в нем написаны названия файлов с текущим шаблоном.
-find . -type f -name "*.txt" | grep -lrw sec | xargs cp -t | mv -t new.txt
-find . -type f -name "*.txt" | xargs grep -lrw sec | xargs cp -t | xargs > new.txt | xargs mv -t inner_d3/ new.txt
-grep -r -h “sec” | cat > файл.txt дашин вариант
-find . -type f -name "*.txt" | xargs grep -lrw sec | xargs cp -t
-grep -lrw “sec” &&  cp -t && > new.txt && mv -t  new.txt
-find . -type f -name "*.txt" | xargs cp -t | xargs grep -lrw sec | xargs > new.txt | xargs grep -lrw “sec”| xargs mv -t 
 
 39. Команда в одну строку. Удалить текстовые файлы у которых в содержимом есть слово “sec”
 grep -rl 'sec' *|xargs rm -r
