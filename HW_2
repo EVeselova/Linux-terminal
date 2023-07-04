@@ -101,7 +101,7 @@ grep -l second * | xargs realpath
 grep -r -v second
 
 32. Найти только название и путь к файлам где нет комбинации “second”
-grep -L -r second
+grep -L -r second  | xargs realpath
 
 33. Вывести в терминал 4 последних строк любого текстового файла
 tail -5 tf_5.txt
